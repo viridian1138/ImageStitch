@@ -106,17 +106,14 @@ public class FirstStageIterationHandler {
 	{
 		if( m.get( mv ) != null )
 		{
-			Iterator<File> it = m.get( mv ).iterator();
-			while( it.hasNext() )
+			for( final File f2 : m.get( mv ) )
 			{
-				File f2 = it.next();
 				if( !( brdcst.contains( f2 ) ) )
 				{
 					hndl.handleAssociation(f, f2);
 				}
 				brdcst.add( f2 );
 			}
-			it = null;
 			m.get( mv ).add( f );
 		}
 		else
@@ -134,17 +131,14 @@ public class FirstStageIterationHandler {
 	private static void handleAddNull( HashSet<File> m , File f , IAssociationHandler hndl , HashSet<File> brdcst  ) throws Throwable
 	{
 		
-		Iterator<File> it = m.iterator();
-		while( it.hasNext() )
+		for( final File f2 : m )
 		{
-			File f2 = it.next();
 			if( !( brdcst.contains( f2 ) ) )
 			{
 				hndl.handleAssociation(f, f2);
 			}
 			brdcst.add( f2 );
 		}
-		it = null;
 		m.add( f );
 	}
 	

@@ -101,14 +101,12 @@ public class DateExtractor {
 		 Metadata metadata = null;
 	     metadata = JpegMetadataReader.readMetadata(jpegFile);
 	        // iterate through metadata directories
-	        Iterator directories = metadata.getDirectories().iterator();
 	        if(directories != null) {
-	            while (directories.hasNext()) {
-	                Directory directory = (Directory)directories.next();
+	            for ( final Object ii : metadata.getDirectories() ) {
+	                Directory directory = (Directory) ii;
 	                // iterate through tags and print to System.out
-	                Iterator tags = directory.getTags().iterator();
-	                while (tags.hasNext()) {
-	                    Tag tag = (Tag)tags.next();
+	                for ( final Object jj : directory.getTags() ) {
+	                    Tag tag = (Tag) jj;
 	                    String str = tag.toString();
 	                    String dname = tag.getDirectoryName();
 	                    String tname = tag.getTagName();

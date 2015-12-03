@@ -283,11 +283,9 @@ public class PanomaticClusterHandler implements IClusterHandler {
 		String command = "panomatic -o stitch/tmp_" + getStitchLoc() + "/tmp.pto";
 		
 		
-		Iterator<File> it = f.iterator();
-		
-		while( it.hasNext() )
+		for( final File ii : f )
 		{
-			command = command + " " + ( it.next().getAbsolutePath() );
+			command = command + " " + ( ii.getAbsolutePath() );
 		}
 		
 		

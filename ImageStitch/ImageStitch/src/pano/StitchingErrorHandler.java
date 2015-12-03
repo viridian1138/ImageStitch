@@ -69,10 +69,9 @@ public class StitchingErrorHandler implements IClusterHandler {
 		
 		if( !( ff.exists() ) )
 		{
-			Iterator<File> it = f.iterator();
-			while( it.hasNext() )
+			for( final File ii : f )
 			{
-				handleUnstitchedCopy( it.next() );
+				handleUnstitchedCopy( ii );
 			}
 			
 			handleStdCmd( "mv stitch/tmp_" + lstDesc + " stitch_failed" );

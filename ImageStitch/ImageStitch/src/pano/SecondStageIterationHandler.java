@@ -81,26 +81,23 @@ public class SecondStageIterationHandler {
 		while( prevSz != prevGrp.size() )
 		{
 			prevSz = prevGrp.size();
-			Iterator<File> ita = grp.iterator();
-			while( ita.hasNext() )
+			for( final File ii : grp )
 			{
-				prevGrp.add( ita.next() );
+				prevGrp.add( ii );
 			}
 			
 			HashSet<File> ngrp = grp;
 			
 			grp = new HashSet<File>();
 			
-			ita = ngrp.iterator();
-			while( ita.hasNext() )
+			for( final File ii : ngrp )
 			{
-				HashSet<File> fb = maps.get( ita.next() );
+				HashSet<File> fb = maps.get( ii );
 				if( fb != null )
 				{
-					Iterator<File> itb = fb.iterator();
-					while( itb.hasNext() )
+					for( final File jj : fb )
 					{
-						grp.add( itb.next() );
+						grp.add( jj );
 					}
 				}
 			}
@@ -109,10 +106,9 @@ public class SecondStageIterationHandler {
 		
 		hndl.handleCluster( prevGrp );
 		
-		Iterator<File> ita = prevGrp.iterator();
-		while( ita.hasNext() )
+		for( final File ii : prevGrp )
 		{
-			fillSet.add( ita.next() );
+			fillSet.add( ii );
 		}
 	}
 	
